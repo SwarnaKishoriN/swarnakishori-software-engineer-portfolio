@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome To My PortFolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        * {
+          margin: 0; padding: 0; box-sizing: border-box;
+        }
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background: #0f172a;
+          color: #e0e7ff;
+          scroll-behavior: smooth;
+        }
+
+        header {
+          background: #1e293b;
+          padding: 2rem;
+          text-align: center;
+          border-bottom: 3px solid #3b82f6;
+        }
+        header img {
+          width: 140px;
+          height: 140px;
+          border-radius: 50%;
+          border: 4px solid #3b82f6;
+          object-fit: cover;
+          margin-bottom: 1rem;
+        }
+        header h1 {
+          font-size: 2.8rem;
+          font-weight: 900;
+          letter-spacing: 2px;
+          margin-bottom: 0.25rem;
+          color: #60a5fa;
+        }
+        header p {
+          font-size: 1.2rem;
+          font-weight: 600;
+          color: #93c5fd;
+        }
+        .fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .fade-in-section.visible {
+    opacity: 1;
+    transform: none;
+  }
+        nav {
+          background: #1e293b;
+          display: flex;
+          justify-content: center;
+          gap: 2rem;
+          padding: 1rem 0;
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          border-bottom: 1px solid #334155;
+        }
+        nav a {
+          color: #cbd5e1;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          text-decoration: none;
+          padding: 0.5rem 1rem;
+          border-radius: 6px;
+          transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        nav a:hover,
+        nav a:focus {
+          background: #3b82f6;
+          color: white;
+        }
+        nav a.active {
+          background-color: #3b82f6;
+          color: #fff;
+        }
+
+        section {
+          max-width: 1000px;
+          margin: 3rem auto;
+          padding: 2rem 1.5rem;
+          background: #1e293b;
+          border-radius: 12px;
+          box-shadow: 0 10px 30px -10px #2563eb80;
+          display: none;
+        }
+        section.active {
+          display: block;
+          animation: fadeUp 0.5s ease-in-out;
+        }
+        @keyframes fadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        section h2 {
+          font-size: 2rem;
+          color: #3b82f6;
+          border-bottom: 3px solid #2563eb;
+          padding-bottom: 0.25rem;
+          margin-bottom: 1rem;
+          font-weight: 900;
+        }
+
+        .skills-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1.25rem;
+        }
+        .skill-card {
+          background: #334155;
+          padding: 1rem 1.5rem;
+          border-radius: 10px;
+          box-shadow: 0 6px 20px #2563eb80;
+          transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .skill-card:hover {
+          background: #3b82f6;
+          transform: translateY(-8px);
+          color: white;
+        }
+        .skill-card h3 {
+          margin-bottom: 0.75rem;
+          font-weight: 700;
+          color: #93c5fd;
+          font-size: 1.15rem;
+        }
+        .skill-list {
+          list-style: none;
+          color: #cbd5e1;
+        }
+        .skill-list li {
+          margin: 0.35rem 0;
+          padding-left: 1rem;
+          position: relative;
+        }
+        .skill-list li::before {
+          content: "▶";
+          position: absolute;
+          left: 0;
+          color: #60a5fa;
+          font-size: 0.8rem;
+        }
+
+        ul.custom-list {
+          list-style-type: none;
+          padding-left: 0;
+        }
+        ul.custom-list li {
+          background: #334155;
+          margin-bottom: 0.8rem;
+          padding: 0.7rem 1rem;
+          border-radius: 8px;
+          box-shadow: 0 3px 12px #2563eb50;
+        }
+
+        .contact-list {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+        .contact-item {
+          background: #334155;
+          padding: 1rem 1.5rem;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          font-size: 1.1rem;
+        }
+        .contact-item i {
+          color: #3b82f6;
+          font-size: 1.5rem;
+          min-width: 30px;
+          text-align: center;
+        }
+        .contact-item a {
+          color: #60a5fa;
+          text-decoration: none;
+        }
+        .contact-item a:hover {
+          text-decoration: underline;
+        }
+
+        footer {
+          text-align: center;
+          padding: 1rem 0;
+          background: #1e293b;
+          color: #94a3b8;
+          margin-top: 4rem;
+        }
+
+        @media (max-width: 600px) {
+          nav {
+            gap: 1rem;
+            padding: 0.5rem 0;
+          }
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="profile.jpg" alt="Swarna Kishori Natarajan" />
+    <h1>Swarna Kishori Natarajan</h1>
+    <p>Senior Software Engineer - (Backend - Java | Spring Boot | Microservices and Cloud)</p>
+</header>
+
+<nav>
+    <a href="#aboutme">About Me</a>
+    <a href="#skills">Skills</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+</nav>
+<section id="aboutme" class="fade-in-section">
+    <p>
+        Senior Java Backend Developer with over 5 years of experience delivering scalable, secure, and maintainable backend systems within the Banking and Airline industries. Specialises in enterprise-level API design and integration using Java 8/17, Spring Boot, and Microservices architecture.  <br><br>&nbsp;&nbsp;&nbsp;&nbsp;Proven expertise in building and optimising RESTful services with a strong focus on performance, modular design, and clean coding principles.<br>
+
+        <br> &nbsp;&nbsp;&nbsp;&nbsp; Skilled in developing and deploying production-grade systems through CI/CD pipelines using Jenkins, Docker, and Kubernetes. Actively involved in production deployments, incident resolution, and log analysis using Splunk, ensuring system reliability and uptime.<br>
+
+        <br>  &nbsp;&nbsp;&nbsp;&nbsp;Over a year of hands-on testing experience with JUnit, Cucumber (BDD), and manual/regression testing to ensure quality assurance across services. Applies modern design patterns (Singleton, Factory, Observer, Strategy) to deliver robust, maintainable solutions.<br>
+
+        <br>  &nbsp;&nbsp;&nbsp;&nbsp; Experienced in working within Agile environments, following Scrum practices for iterative delivery, sprint planning, and cross-functional collaboration using Jira and Bitbucket. <br>
+
+        <br> Strong background in the FinTech domain, building core banking APIs with a focus on security, compliance, and high availability. Consistently delivers clean, testable, and production-ready code aligned with business goals and technical excellence.
+    </p>
+</section>
+
+
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+        <div class="skill-card">
+            <h3>Front-End Technologies</h3>
+            <ul class="skill-list">
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+                <li>Angular Framework</li>
+            </ul>
+        </div>
+        <div class="skill-card">
+            <h3>Backend Technologies</h3>
+            <ul class="skill-list">
+                <li>Java 8, Java 17</li>
+                <li>Spring Boot, Spring MVC, Spring Security</li>
+                <li>Hibernate, JPA</li>
+            </ul>
+        </div>
+        <div class="skill-card">
+            <h3>Database & Tools</h3>
+            <ul class="skill-list">
+                <li>MySQL, Oracle, SQL, JDBC</li>
+                <li>Maven, Git, GitHub, GitLab</li>
+                <li>Jenkins, Docker, Openshift</li>
+            </ul>
+        </div>
+        <div class="skill-card">
+            <h3>Testing & Security</h3>
+            <ul class="skill-list">
+                <li>Postman, SOAP UI, JUnit, Cucumber</li>
+                <li>Spring Security, OAuth2, JWT</li>
+            </ul>
+        </div>
+        <div class="skill-card">
+            <h3>Agile & Cloud</h3>
+            <ul class="skill-list">
+                <li>Jira, Bitbucket, Confluence</li>
+                <li>AWS, Jenkins CI/CD</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="certifications">
+    <h2>Certifications</h2>
+    <ul class="custom-list">
+        <li>Spring Certified Professional by VMware (Oct 2024)</li>
+    </ul>
+</section>
+
+<section id="experience">
+    <h2>Professional Experience</h2>
+    <div style="position: relative; margin-top: 2rem; padding-left: 30px; border-left: 3px solid #3b82f6;">
+        <div style="margin-bottom: 2rem; position: relative;">
+            <img src="logos/ltimindtree.jpeg" alt="LTIMindtree" style="position: absolute; left: -38px; top: 0; width: 32px; height: 32px; background: #0f172a; padding: 3px; border: 2px solid #3b82f6; border-radius: 50%;">
+            <strong>LTIMindtree</strong> – Senior Cloud Engineer
+            <br><small>Aug 2024 – Present</small>
+            <p>Led a team and implemented CI/CD pipelines using Jenkins, Openshift, Docker, Kafka messaging.</p>
+        </div>
+        <div style="margin-bottom: 2rem; position: relative;">
+            <img src="logos/futurefocus.jpeg" alt="Future Focus" style="position: absolute; left: -38px; top: 0; width: 32px; height: 32px; background: #0f172a; padding: 3px; border: 2px solid #3b82f6; border-radius: 50%;">
+            <strong>Future Focus Infotech</strong> – Software Engineer
+            <br><small>Sep 2022 – May 2024</small>
+            <p>Performance optimization, design patterns, payment gateway integrations.</p>
+        </div>
+        <div style="margin-bottom: 2rem; position: relative;">
+            <img src="logos/monarch.jpeg" alt="Monarch" style="position: absolute; left: -38px; top: 0; width: 32px; height: 32px; background: #0f172a; padding: 3px; border: 2px solid #3b82f6; border-radius: 50%;">
+            <strong>Monarch Infotech</strong> – Software Engineer
+            <br><small>Sep 2021 – Aug 2022</small>
+            <p>Spring Security, schema design, banking apps integrations.</p>
+        </div>
+        <div style="margin-bottom: 2rem; position: relative;">
+            <img src="logos/karky.jpg" alt="Karky" style="position: absolute; left: -38px; top: 0; width: 32px; height: 32px; background: #0f172a; padding: 3px; border: 2px solid #3b82f6; border-radius: 50%;">
+            <strong>Karky Research Foundation</strong> – Software Developer
+            <br><small>Dec 2019 – Dec 2020</small>
+            <p>Full stack dev with Angular, Spring Security, responsive UI.</p>
+        </div>
+        <div style="margin-bottom: 0; position: relative;">
+            <img src="logos/infosys.jpeg" alt="Infosys" style="position: absolute; left: -38px; top: 0; width: 32px; height: 32px; background: #0f172a; padding: 3px; border: 2px solid #3b82f6; border-radius: 50%;">
+            <strong>Infosys</strong> – Operation Executive - Trainee
+            <br><small>Jul 2018 – Nov 2018</small>
+            <p>Developed interactive UI with JavaScript, HTML, JSP, CSS.</p>
+        </div>
+    </div>
+</section>
+
+
+<section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-list">
+        <div class="contact-item"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/swarna-kishori/" target="_blank" rel="noreferrer">linkedin.com/in/swarna-kishori</a></div>
+        <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:swarnakishori12@gmail.com">swarnakishori12@gmail.com</a></div>
+        <div class="contact-item"><i class="fab fa-github"></i> <a href="https://github.com/SwarnaKishoriN" target="_blank" rel="noreferrer">github.com/SwarnaKishoriN</a></div>
+    </div>
+</section>
+
+<footer>
+    &copy; 2025 Swarna Kishori Natarajan. All rights reserved.
+</footer>
+
+<script>
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('section');
+
+    function showSection(id) {
+      sections.forEach(section => {
+        section.classList.remove('active');
+        if (section.id === id) {
+          section.classList.add('active');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + id) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const firstSection = sections[0];
+      if (firstSection) {
+        showSection(firstSection.id);
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const id = link.getAttribute('href').replace('#', '');
+          showSection(id);
+        });
+      });
+    });
+     const faders = document.querySelectorAll('.fade-in-section');
+
+  const appearOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+</script>
+
+</body>
+</html>
